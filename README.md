@@ -16,12 +16,16 @@ This project builds a machine learning pipeline to predict Parkinson’s disease
   - Parkinson’s (Class 1): 564 samples (74.6%)  
   - Healthy (Class 0): 192 samples (25.4%)
 
-## 🧪 Key Voice Features  
-Includes various measures such as:  
-- **Jitter**, **Shimmer**, **HNR** (Harmonic-to-Noise Ratio)  
-- **PPE** (Pitch Period Entropy)  
-- **DFA** (Detrended Fluctuation Analysis)  
-- **RPDE** (Recurrence Period Density Entropy)
+## 🧪 Key Voice Features
+
+This dataset includes a range of acoustic biomarkers extracted from sustained phonation:
+
+- **Jitter**, **Shimmer** – Measure frequency and amplitude variation in voice (instability)
+- **NHR**, **HNR** – Noise-to-harmonics ratios, assessing voice breathiness or harshness
+- **RPDE**, **DFA** – Nonlinear signal dynamics useful in characterizing neurodegenerative patterns
+- **PPE** – Quantifies vocal fold irregularities (pitch variability)
+
+> 🧠 These features are known to reflect vocal impairments common in early-stage Parkinson’s.
 
 ## 🧪 Technologies Used
 
@@ -53,7 +57,7 @@ Includes various measures such as:
    - Precision-Recall curves
    - Chi-squared feature importance
 
-
+---
 
 ## 🔍 Initial Exploration
 
@@ -99,7 +103,7 @@ The dataset is **imbalanced** (≈75% Parkinson’s, 25% Healthy). To ensure fai
 
 This ensured better recall for the Healthy class — critical in a clinical context where false positives/negatives have high cost.
 
-
+---
 
 ## 🔁 Cross-Validation & Evaluation Strategy
 
@@ -140,6 +144,7 @@ We used multiple metrics to get a holistic view of model performance:
   - True Positives (TP), False Positives (FP)  
   - True Negatives (TN), False Negatives (FN)  
   Helps assess medical risk of misclassification.
+---
 
 ## 📊 Model Performance
 
@@ -156,6 +161,8 @@ We evaluated all models using ROC-AUC and PR-AUC — two critical metrics for im
 - **Strong PR-AUC scores** across all models indicate reliable performance in identifying Parkinson’s cases, despite class imbalance.
 - **Random Forest** edges out others in both ROC and PR space, showing strong sensitivity and precision.
 - **SVC**, though slightly behind, still performs well and offers calibrated probability outputs for downstream analysis.
+
+---
 
 ## 📈 Classification Reports
 
@@ -184,22 +191,22 @@ We evaluated all models using ROC-AUC and PR-AUC — two critical metrics for im
 [ [9, 4],
 [9, 29] ]
 
-✅ 29 Parkinson’s cases correctly detected  
-⚠️ 9 Parkinson’s missed (false negatives)  
+- ✅ 29 Parkinson’s cases correctly detected  
+- ⚠️ 9 Parkinson’s missed (false negatives)  
 
 ### Random Forest
 [ [4, 9],
 [3, 35] ]
 
-✅ 35 Parkinson’s detected  
-⚠️ High false positives for Healthy (9)
+- ✅ 35 Parkinson’s detected  
+- ⚠️ High false positives for Healthy (9)
 
 ### SVC (Platt Calibrated)
 [ [5, 8],
 [2, 36] ]
 
-✅ Best Parkinson’s detection (36)  
-✅ Moderate improvement for Healthy detection (5 correct)
+- ✅ Best Parkinson’s detection (36)  
+- ✅ Moderate improvement for Healthy detection (5 correct)
 
 ## 📌 Conclusion
 
@@ -207,6 +214,19 @@ This project demonstrates the promise of using **voice-based features** to detec
 
 - High precision and recall for Parkinson’s cases make these models viable for screening.
 - With **further tuning, calibration, and validation**, this pipeline can assist in **early-stage detection** and **continuous remote monitoring**.
+
+---
+
+## 📌 TL;DR (Too Long; Didn't Read)
+
+- 🎯 Goal: Predict Parkinson’s using voice features
+- 👥 757 samples, ~75% Parkinson’s
+- ⚖️ Balanced models with RandomOverSampler
+- 🤖 Models: Logistic Regression, Random Forest, SVC
+- 📈 Best ROC-AUC: 0.78 | Best Class 0 Recall: 0.38
+- 📌 Insight: Class 0 (Healthy) detection is hardest — critical for real-world impact
+
+---
 
 ❗**Future Work**:
 - Incorporate actual **voice waveforms** for deep learning applications.

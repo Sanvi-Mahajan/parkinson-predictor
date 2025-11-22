@@ -1,0 +1,5 @@
+feature_group,val_auc
+jitter_group,0.7307692307692307
+snr_group,0.7327935222672064
+mfcc_group,0.7186234817813766
+tqwt_group,0.771255060728745

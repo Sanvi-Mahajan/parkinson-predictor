@@ -87,9 +87,63 @@ pip install -r requirements.txt
 jupyter notebook Parkinson_voice_classification.ipynb
 ```
 
-## 11. Artifacts
+## 11. 📁 Artifacts
 
+This project generates a full suite of interpretability and robustness artifacts.  
+All outputs are available under the `/reports/` directory.
 
+### 🔷 SHAP (Global Interpretability)
+- **SHAP Summary Plot**  
+  `reports/shap/shap_beeswarm_svc.png`
+
+- **SHAP Bar Plot**  
+  `reports/shap/shap_bar_svc.png`
+
+- **SHAP Feature Interactions**  
+  (Multiple dependence/interaction plots inside `reports/shap/`)
+
+---
+
+### 🔶 SHAP Forceplots (Local Explanations)
+- `reports/forceplots/forceplot_svc_TP.png` – True Positive explanation  
+- `reports/forceplots/forceplot_svc_FP.png` – False Positive explanation  
+- `reports/forceplots/forceplot_svc_FN.png` – False Negative explanation  
+
+---
+
+### 🟩 LIME Explanations
+Interactive HTML explanations:
+
+- `reports/lime/lime_svc_TP.html`  
+- `reports/lime/lime_svc_FP.html`  
+- `reports/lime/lime_svc_FN.html`  
+
+Use any browser to open these.
+
+---
+
+### 🧪 Ablation Study
+- `reports/ablation/ablation_results_svc.csv`
+
+This file shows how model performance changes when removing groups of related voice features (jitter, shimmer, HNR, TQWT bands, etc).
+
+---
+
+### 🌀 Counterfactual & Sensitivity Analysis
+- `reports/jitter_sensitivity/jitter_sensitivity_svc.csv`
+
+This evaluates how prediction probability changes when perturbing key features (e.g., jitter ±20%).
+
+---
+
+### 🧭 Misclassification Clustering (LIME-driven)
+- `reports/fp_clustering/lime_fp_clusters_svc.csv`
+
+Clusters false positives based on their LIME explanation vectors to identify systematic error patterns.
+
+---
+
+All artifacts are generated automatically during notebook execution.
 
 
 ---
